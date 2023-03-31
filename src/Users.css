@@ -1,0 +1,33 @@
+.container h1 {
+    margin-top: 3em;
+    margin-bottom: 0.2em;
+    padding-left: 0.5em;
+    color: darkblue;
+    font-size: 3em;
+}
+
+.container form input {
+    color: grey;
+    font-size: 1em;
+    padding: 1em;
+    margin: 0.5em;
+    border: 0;
+}
+
+.container form input:focus-visible {
+    outline: none;
+}
+
+.container form button {
+    background-color: #0066ff;
+    color: white;
+    font-size: 1em;
+    padding: 1em;
+    margin: 0.5em;
+    border: 0;
+    cursor: pointer;
+}
+
+.container form button:hover {
+    background-color: #003399;
+}
