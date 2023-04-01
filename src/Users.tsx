@@ -10,6 +10,7 @@ interface userData {
 
 interface Props {
     userList: userData[],
+    removeUser(event: React.SyntheticEvent, id: number): any,
 }
 
 
@@ -33,6 +34,12 @@ const Users = (): JSX.Element => {
         setUserList(userList.concat(user));
     }
 
+    const removeUser = (event: React.SyntheticEvent, id: number): void => {
+        event.preventDefault();
+
+        setUserList(userList.filter(user => user.id !== id));
+    }
+
     return (
         <div>
             <h1>User list</h1>
@@ -40,7 +47,7 @@ const Users = (): JSX.Element => {
                 <input type="text" placeholder="Enter name" value={name} onChange={changeInput} />
                 <button type="submit">Add user</button>
             </form>
-            <UserList userList={userList} />
+            <UserList userList={userList} removeUser={removeUser} />
         </div>
     );
 }
