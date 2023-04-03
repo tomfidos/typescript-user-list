@@ -3,21 +3,16 @@ import React, { useState } from 'react';
 import UserList from './UserList';
 import './Users.css';
 
-interface userData {
+interface UserData {
     name: string,
     id: number,
-}
-
-interface Props {
-    userList: userData[],
-    removeUser(event: React.SyntheticEvent, id: number): any,
 }
 
 
 const Users = (): JSX.Element => {
 
     const [name, setName] = useState<string>('')
-    const [userList, setUserList] = useState<userData[]>([]);
+    const [userList, setUserList] = useState<UserData[]>([]);
 
     const changeInput = (event: React.FormEvent<HTMLInputElement>): void => {
         setName(event.currentTarget.value);
@@ -34,14 +29,12 @@ const Users = (): JSX.Element => {
         setUserList(userList.concat(user));
     }
 
-    const removeUser = (event: React.SyntheticEvent, id: number): void => {
-        event.preventDefault();
-
+    const removeUser = (id: number): void => {
         setUserList(userList.filter(user => user.id !== id));
     }
 
     return (
-        <div>
+        <div className="container">
             <h1>User list</h1>
             <form onSubmit={event => addUser(event)}>
                 <input type="text" placeholder="Enter name" value={name} onChange={changeInput} />
@@ -53,4 +46,4 @@ const Users = (): JSX.Element => {
 }
 
 export default Users;
-export type { Props };
+export type { UserData };
