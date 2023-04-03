@@ -1,12 +1,18 @@
-import { Props } from './Users';
+import { UserData } from './Users';
+import './UserList.css';
+
+interface UserListProps {
+    userList: UserData[],
+    removeUser: (id: number) => void,
+}
 
 
-const UserList = (props: Props): JSX.Element => {
+const UserList = (props: UserListProps): JSX.Element => {
 
-    const userElements = props.userList.map(user => <li key={user.id}>{user.name}<span onClick={event => props.removeUser(event, user.id)}>X</span></li>);
+    const userElements: JSX.Element[] = props.userList.map(user => <li key={user.id}>{user.name}<span onClick={() => props.removeUser(user.id)}>X</span></li>);
 
     return (
-        <ul>{userElements}</ul>
+        <ul className="list">{userElements}</ul>
     );
 }
 
